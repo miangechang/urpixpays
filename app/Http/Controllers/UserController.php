@@ -137,13 +137,14 @@ class UserController extends Controller
         $uid=$_COOKIE['id'];
         $u_profile=DB::table('users')->where('no',$uid)->pluck('profile_image')[0];
         $u_name=DB::table('users')->where('no',$uid)->pluck('name')[0];
+        $u_age=DB::table('users')->where('no',$uid)->pluck('age')[0];        
         $u_email=DB::table('users')->where('no',$uid)->pluck('email')[0];
         $u_date=DB::table('users')->where('no',$uid)->pluck('register_date')[0];
         $u_wallet=DB::table('userpix')->where('u-id',$uid)->pluck('walet')[0];
         $u_Flip=DB::table('userpix')->where('u-id',$uid)->pluck('Flip')[0];
         $u_Charge=DB::table('userpix')->where('u-id',$uid)->pluck('Charge')[0];
         $u_Wand=DB::table('userpix')->where('u-id',$uid)->pluck('Wand')[0];
-        return view('myprofile',compact('u_name','u_email','u_date','u_wallet','u_Flip','u_Charge','u_Wand','u_profile'));
+        return view('myprofile',compact('u_name','u_email','u_date','u_wallet','u_Flip','u_Charge','u_Wand','u_profile','u_age'));
     }
     public function withraw_paypal()
     {
@@ -174,11 +175,12 @@ class UserController extends Controller
     public function usersignup(){
         $data=Input::all();
         $email=$data['email'];
+        $age=$data['age'];
         $user = DB::table('users')->where([['email', $email],['vc','true']])->first();
 
         //$this->response(200,'test',$user);
-        if($user){
-            $this->response(200,'Email in use',NULL);
+        if($user || $age<18){
+            $this->response(200,"Invalid email or password",NULL);
         }
         else{
             $vc=DB::table('users')->where('email',$email)->value('vc');
@@ -189,11 +191,11 @@ class UserController extends Controller
 
                 //$this->sendemail($email,$vc);
                 //Mail::to('jackfrank613@gmail.com')->send(new TestEmail($data,"Hi! this is Verification Code."));
-                $uid=DB::table('users')->where('email',$email)->pluck('no');
-                $inserarr=[
-                    'u-id'=>$uid[0]
-                ];
-                DB::table('userpix')->insert($inserarr);
+            //     $uid=DB::table('users')->where('email',$email)->pluck('no');
+            //     $inserarr=[
+            //         'u-id'=>$uid[0],
+            //   ];
+            //     DB::table('userpix')->insert($inserarr);
                 $this->response(1,"Success Sign up",$uid);
             }
             else{
@@ -237,6 +239,7 @@ class UserController extends Controller
         $data=Input::all();
         $email=$data['email'];
         $name=$data['name'];
+        $age=$data['age'];
         $password=$data['password'];
         $mobile_number=$data['mobile_number'];
         //$vc=$data['vc'];
@@ -245,6 +248,9 @@ class UserController extends Controller
         //$this->response(200,'test',$user);
         if($user){
             $this->response(200,'Email in use',NULL);
+        }
+        elseif($age<18){
+            $this->response(202,'The age must be more than 18',NULL);
         }
         else{
             $user1 = DB::table('users')->where('email', $email)->first();
@@ -261,6 +267,7 @@ class UserController extends Controller
             else{
                 $inserarr=[
                     'name'=>$name,
+                    'age'=>$age,
                     'email'=>$email,
                     'password'=>md5($password),
                     'mobilenum'=>$mobile_number,
@@ -272,6 +279,11 @@ class UserController extends Controller
                     'u-id'=>$uid[0]
                 ];
                 DB::table('userpix')->insert($inserarr);
+                DB::table('userpix')->where('u-id',$uid[0])->update([
+                    'Flip'=>5,
+                    'Charge'=>5,
+                    'Wand'=>5
+                    ]);
                 
 //--------------------add_invite_walet-----------------------//
                 $invite_user_id=DB::table('invite')->where('friend_email',$email)->pluck('user_id');
@@ -316,7 +328,7 @@ class UserController extends Controller
 
                 $this->response(1,"Success Sign up",$uid);
                 //Mail::to($email)->send(new TestEmail($vc,"Hi! this is Verification Code."));
-                $this->response(1,/*"Sent VC to email"*/'Success sign up',NULL);
+                // $this->response(1,/*"Sent VC to email"*/'Success sign up',NULL);
             }
         }
     }

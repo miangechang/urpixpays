@@ -52,7 +52,7 @@
                                     <div class="col-sm-6"  style="padding-bottom: 0px!important;">
                                         <div class="col-sm-12 swap_buy_type" >
                                         <img style="width: 100%;height: 50%;    " src="https://web.gurushots.com/assets/images/gsApp/modals/shop/EXPOSURE_AUTOFILL_0.png">
-                                            <h5 ng-bind="pack.description">1 Flips</h5>
+                                            <h5 ng-bind="pack.description">1 Flip</h5>
                                             <BUTTON onclick="buy_flip_fill(1,1)" class="gs-btn--blue" style = "background-color:#ff6600;">$0.49</BUTTON>
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@
                                         <div class="col-sm-6"  style="padding-bottom: 0px!important;">
                                             <div class="col-sm-12 swap_buy_type" >
                                                 <img  style="width: 100%;height: 50%;    " src="https://web.gurushots.com/assets/images/gsApp/modals/shop/EXPOSURE_AUTOFILL_0.png">
-                                                <h5 ng-bind="pack.description">1 Charges</h5>
+                                                <h5 ng-bind="pack.description">1 Charge</h5>
                                                 <BUTTON onclick="buy_flip_fill(2,1)" class="gs-btn--blue" style = "background-color:#ff6600;">$0.49</BUTTON>
 
                                             </div>
@@ -159,7 +159,7 @@
                                         <div class="col-sm-6"  style="padding-bottom: 0px!important;">
                                             <div class="col-sm-12 swap_buy_type" >
                                                 <img  style="width: 100%;height: 50%;    " src="https://web.gurushots.com/assets/images/gsApp/modals/shop/PHOTO_SWAP_0.png">
-                                                <h5 ng-bind="pack.description">1 Wands</h5>
+                                                <h5 ng-bind="pack.description">1 Wand</h5>
                                                 <BUTTON onclick="buy_flip_fill(3,1)" class="gs-btn--blue" style = "background-color:#ff6600;">$0.59</BUTTON>
 
                                             </div>

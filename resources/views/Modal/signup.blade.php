@@ -18,6 +18,10 @@
                         <input type="text" class="form-control" name="name" id="name" placeholder="full name">
                     </div>
                     <div class="form-group">
+                        <label for="inputName">Age</label>
+                        <input type="text" class="form-control" name="age" id="age" placeholder="Age">
+                    </div>                    
+                    <div class="form-group">
                         <label for="inputVerify3">Mobile Number</label>
                         <input type="text" class="form-control" name ="mobile_number"  id="mobile_number" placeholder="Enter Phone Number" required="">
                     </div>
@@ -89,6 +93,7 @@
     var mobile_number;
     var email ;
     var password ;
+    var age;
     var vc;
     var login=function(){
         var request=$.ajax({
@@ -132,7 +137,7 @@
         var request=$.ajax({
             url: '{{url('sendvc')}}',
             type: 'post',
-            data: { name: name, mobile_number : mobile_number ,email:email,password:password} ,
+            data: { name: name, mobile_number : mobile_number ,email:email,password:password,age:age} ,
 
             beforeSend: function (request) {
                 return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
@@ -142,11 +147,11 @@
                 console.log(obj);
                 var obj = JSON.parse(response);
                 // alert(obj.message);
-                // switch (obj.state) {
-                //     case 1:
+                switch (obj.state) {
+                    case 1:
                         $('#signupdlg').modal('toggle');
                         // $('#verifydlg').modal('show');
-                        $('#alertmessage').attr('value', "Success");
+                        $('#alertmessage').attr('value', "Success Signup");
                         // $('#signindlg').modal('toggle');
                         $('#alert_message_dlg').attr('class', 'modal fade animate');
                         $('#alert_message_dlg').modal('show');
@@ -154,11 +159,34 @@
                             $('#alert_message_dlg').attr('class', 'modal fade animateout');
                             $('#alert_message_dlg').modal('toggle');
                         }, 1000);
-                //         break;
-                //     default:
-                //         break;
-
-                // }
+                        break;                    
+                    case 200:
+                        $('#signupdlg').modal('toggle');
+                        // $('#verifydlg').modal('show');
+                        $('#alertmessage').attr('value', "Email in use");
+                        // $('#signindlg').modal('toggle');
+                        $('#alert_message_dlg').attr('class', 'modal fade animate');
+                        $('#alert_message_dlg').modal('show');
+                        setTimeout(function() {
+                            $('#alert_message_dlg').attr('class', 'modal fade animateout');
+                            $('#alert_message_dlg').modal('toggle');
+                        }, 1000);
+                        break;
+                    case 202:
+                         $('#signupdlg').modal('toggle');
+                        // $('#verifydlg').modal('show');
+                        $('#alertmessage').attr('value', "Failed:The age must be more than 18");
+                        // $('#signindlg').modal('toggle');
+                        $('#alert_message_dlg').attr('class', 'modal fade animate');
+                        $('#alert_message_dlg').modal('show');
+                        setTimeout(function() {
+                            $('#alert_message_dlg').attr('class', 'modal fade animateout');
+                            $('#alert_message_dlg').modal('toggle');
+                        }, 1000);
+                        break;                           
+                    default:
+                        break;
+                }
 
                 console.log(response);
 
@@ -194,7 +222,8 @@
         mobile_number = $('#mobile_number').val();
         email = $('#email').val();
         password =$('#password').val();
-        if(!name || !mobile_number || !email || !password) {
+        age =$('#age').val();
+        if(!name || !mobile_number || !email || !password || !age) {
             alert("Input your information correctly");
             return;
         }

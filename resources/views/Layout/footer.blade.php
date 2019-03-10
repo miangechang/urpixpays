@@ -94,10 +94,7 @@
                                 <ul>
                                     
                                     <!--<li><i class="fa fa-envelope"></i>-->
-                                    <span>You can also contact us via email at info@urpixpays.com and expect a quick and comprehensive answer during the business hours. 
-                                        We offer customer support via phone and other means to assist photographers in all technical and organisational matters.
-                                        You’ve seen the rest, now partner with the best and enjoy the quality of service in photography and photo contest!!!
-</span>
+                                    <span> info@urpixpays.com</span>
                                     </li>
                                 </ul>
                             </div>

@@ -19,8 +19,7 @@
 
         </div>
         <div class="contentcenter paddingtop-50">
-            <h2>This is custom heading element<br>
-                No need to be a professional photographer</h2>
+            <h2>No need to be a professional photographer</h2>
         </div>
         <div class="row paddingtop-50">
             <div class="col-md-6 contentcenter backgroundimage_left">
@@ -32,7 +31,7 @@
 
         </div>
         <div class="contentcenter paddingtop-50">
-            <h2>Show your tales to the world</h2>
+            <h2>Show your talent to the world</h2>
         </div>
 
 

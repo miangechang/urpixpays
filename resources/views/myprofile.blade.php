@@ -930,12 +930,30 @@ a:hover { color: #777; }
     }
     </style>    
  <style>
-            @media only screen and (max-width: 767px) {
-                  #sidebar{
-                   display:none;
-                  }
-                }
-        </style>
+    @media only screen and (max-width: 767px) {
+          #sidebar{
+           display:none;
+          }
+        }
+</style>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      margin-top:50px;
+    }
+    
+    td, th {
+      border: 1px solid black;
+      text-align: center;
+      padding: 10px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
   
 </head>
 
@@ -1070,17 +1088,41 @@ a:hover { color: #777; }
                     </div>
                 </div>  
             </div>
-            <div class="col-md-6">
-                <div class="bio-content">
-                    <h2 style = "font-family:Montserrat,sans-serif;color:red;"><h style="color:blue;">Name: </h>{{$u_name}}</h2>
-                    <h2 style = "font-family:Montserrat,sans-serif;color:red;"><h style="color:blue;">Email: </h>{{$u_email}}</h2>
-                    <h2 style = "font-family:Montserrat,sans-serif;color:red;font-size:28px;"><h style="color:blue;font-size:30px;">Date: </h>{{$u_date}}</h2>
-                    <h2 style = "font-family:Montserrat,sans-serif;color:red;"><h style="color:blue;">Wallet: </h>{{$u_wallet}}   </h2>
-                    <h2 style = "font-family:Montserrat,sans-serif;color:red;"><h style="color:blue;">Flip: </h>{{$u_Flip}} </h2>
-                    <h2 style = "font-family:Montserrat,sans-serif;color:red;"><h style="color:blue;">Charge: </h>{{$u_Charge}} </h2>
-                    <h2 style = "font-family:Montserrat,sans-serif;color:red;"><h style="color:blue;">Wand:</h>Wand:{{$u_Wand}}  </h2>
-                </div>
-
+            <div class="col-md-6" style="padding-top:0;" >
+                        <table>
+                          <tr>
+                            <td>Name</td>
+                            <td>{{$u_name}}</td>
+                          </tr>
+                          <tr>
+                            <td>Age</td>
+                            <td>{{$u_age}}</td>
+                          </tr>                          
+                          <tr>
+                            <td>Email</td>
+                            <td>{{$u_email}}</td>
+                          </tr>
+                          <tr>
+                            <td>Register Date</td>
+                            <td>{{$u_date}}</td>
+                          </tr>
+                          <tr>
+                            <td>Wallet</td>
+                            <td>{{$u_wallet}}</td>
+                          </tr>
+                          <tr>
+                            <td>Flip</td>
+                            <td>{{$u_Flip}}</td>
+                          </tr>
+                          <tr>
+                            <td>Charge</td>
+                            <td>{{$u_Charge}}</td>
+                          </tr>
+                          <tr>
+                            <td>Wand</td>
+                            <td>{{$u_Wand}}</td>
+                          </tr>                          
+                        </table>                    
                 </div>
             </div>
         </div>  
