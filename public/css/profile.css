@@ -1,0 +1,104 @@
+.main-content{
+    background:#343233;
+}
+
+.page{
+    max-width:1000px;
+    min-height:90vh;
+    margin:20px auto;
+    margin-top:100px;
+    background:white;
+    padding:30px;
+}
+.profile-pic-container{
+    position:relative;
+}
+
+
+.profile-pic{
+    display:block;
+    width:350px;
+    height:350px;
+    margin:auto;
+    border-radius: 50%;
+
+}
+
+
+#upload-icon{
+    border-radius: 50%;
+    display:none;
+    width: 33px;
+    height: 33px;
+    left:150%;
+    top:150%;
+    transform: translate(-0%, -550%);
+    margin-top: 0;
+
+}
+.upload-hover:hover #image-overlay{
+    transition: .5s ease;
+    opacity:0.1;
+}
+
+#image-overlay{
+    display: none;
+    position: absolute;
+    height: 350px;
+    width: 350px;
+    margin-left: -50px;
+ 
+    top:0;
+    left:calc(50% - 125px);
+
+    background-color:black;
+    opacity:0.3;
+    cursor: pointer;
+}
+
+
+
+
+
+.profile-detial-container{
+    max-width:400px;
+    margin:30px auto;
+}
+.information-container{
+    margin-left:0 !important;
+    margin-right:0 !important;
+    margin-top:10px;
+}
+
+.information-label{
+    font-size:18px;
+    width:150px;
+}
+
+.information-item{
+    width: calc(100% - 150px);
+    padding:5px;
+    border-radius:6px;
+    border-width:1px !important;
+    font-size:18px;
+    height:35px !important;
+    pointer-events: none;
+}
+.editable{
+    pointer-events: initial;
+
+}
+
+.submit-btn{
+    padding:10px !important;
+    font-size:25px;
+    font-family:Montserrat, sansserif; ;
+    letter-spacing: 3px;
+    margin-top:25px;
+    width:350px;
+    height:50px !important;
+    background:orange !important;
+}
+
+
+
